@@ -8,10 +8,16 @@ def tens(num)
             15=> 'Fifteen', 16=> 'Sixteen', 17=> 'Seventeen', 18=> 'Eighteen', 19=> 'Nineteen',
             20=>"twenty", 30=>"thirty", 40=>"fourty", 50=> "fifty", 60=> "sixty", 70=> "seventy", 80=> "eighty", 90=> "ninety"
     }
-    return words[num]
+    num = num.to_s
+    if num.to_i <= 19
+        return words[num.to_i]
+    
+    elsif num.to_i > 19 && num.to_i <= 99
+       return "#{words[num[0].to_i*10]} #{units(num[1].to_i)}"
+    end
 end
 def hundreds(num)
-    return "#{units(num)} hundred,"
+    return "#{units(num)} hundred and"
 end
 # def thousands(num)
 #     return "#{units(num)} thousand,"
@@ -20,28 +26,41 @@ end
 #     return "#{units(num)} billion"
 # end
 
-
 def figureToWords(num)
-    # if num.to_s.length == 1
-    num = num.to_s
-    case 
-        when num.length == 1
-            p units(num.to_i)
-            
-        when num.length == 2
-            if num.to_i <= 19
-                p tens(num.to_i)
-            
-            elsif num.to_i > 19 && num.to_i <= 99
-                    p "#{tens(num[0].to_i*10)} #{units(num[1].to_i)}"
-            else
-                p "problem boss!" 
-            end
-        else 
-           p "hello"
-        when num.length == 2
-            
-    end
+    num = num
+    p num
+    # case 
+    # when num.length == 1
+    #     p units(num.to_i)
+        
+    # when num.length == 2
+    #     p tens(num)
+
+    # when num.length == 3
+=begin
+            two_digits_of_num gets the 2nd and last numbers of a 3 digit number e.g 389, 2 digits 
+            will be 89
+=end
+        # two_digits_of_num = (num[1]+num[2])
+        # p two_digits_of_num
+        # if num[1].to_i == 1
+        #     p "#{hundreds(num[0].to_i)} #{tens(two_digits_of_num.to_i)}"
+        # elsif num[1].to_i == 0
+        #     p "#{hundreds(num[0].to_i)} #{units(num[2].to_i)}"
+        # else
+        #     p "#{hundreds(num[0].to_i)} #{tens(two_digits_of_num.to_i)}"       
+        # end #push to hundreds function #factor the zeroes
+
+
+
+
+
+
+
+
+    # else 
+    #     p "hello"
+    # end
 end
 
-figureToWords(45)
+figureToWords(021)
